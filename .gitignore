@@ -1,2 +1,21 @@
+# Python environments
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Model files
+*.joblib
+*.safetensors
+*.zip
+*.pt
+*.pth
+
+# Temporary files
+.ipynb_checkpoints/
 scores.jsonl
-svr.joblib
+
+# Secrets
+.env
+.env.*
+HF_TOKEN
