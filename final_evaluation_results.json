@@ -1,0 +1,26 @@
+{
+  "model_id": "godu24/swedish-grammar-scorer",
+  "model_revision": "a82985adbf612173e18b084002359f7a5a134c72",
+  "model_parameters": 124692482,
+  "evaluation": {
+    "split": "public_test",
+    "examples": 120,
+    "spearman": 0.821,
+    "roc_auc": 0.963,
+    "time_seconds": 15.6,
+    "samples_per_minute": 460,
+    "hardware": "NVIDIA Tesla T4",
+    "includes_model_loading": true,
+    "model_cached": true
+  },
+  "baseline": {
+    "spearman": 0.528,
+    "roc_auc": 0.783,
+    "time_seconds": 10.1,
+    "samples_per_minute": 714
+  },
+  "random_seed": 42,
+  "max_length": 128,
+  "batch_size": 32,
+  "exit_code": 0
+}

@@ -1,0 +1,36 @@
+{
+  "base_model": "KB/bert-base-swedish-cased",
+  "base_model_revision": "00d1af0f01320f04124b45e67d09ba3b5f705f89",
+  "random_seed": 42,
+  "max_length": 128,
+  "num_labels": 2,
+  "stage1": {
+    "dataset": "godu24/swedish-grammar-training-data",
+    "dataset_revision": "3bc4d2246584c2161da58d4e04070c72f3019c7a",
+    "training_examples": 35452,
+    "epochs": 1,
+    "batch_size": 8,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.01,
+    "optimizer": "AdamW",
+    "loss": "CrossEntropyLoss",
+    "gradient_clipping": 1.0,
+    "mixed_precision": true
+  },
+  "stage2": {
+    "training_examples": 382,
+    "validation_examples": 96,
+    "epochs": 8,
+    "batch_size": 16,
+    "validation_batch_size": 32,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "optimizer": "AdamW",
+    "loss": "MSELoss",
+    "freeze_encoder": true,
+    "trainable_parameters": 1538,
+    "score_function": "softmax_class_1",
+    "checkpoint_selection": "lowest_validation_mae",
+    "best_epoch": 8
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "python_version": "3.13.16",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "torch_version": "2.14.1+cu130",
+  "cuda_available": true,
+  "cuda_version": "13.0",
+  "gpu": "Tesla T4",
+  "current_dependencies": [
+    "torch==2.14.1+cu130",
+    "transformers==5.22.1",
+    "scikit-learn==1.6.1",
+    "numpy==2.4.6",
+    "pandas==2.2.3",
+    "scipy==1.16.3",
+    "huggingface-hub==1.33.0",
+    "safetensors==0.8.0",
+    "tokenizers==0.23.3",
+    "requests==2.32.4",
+    "tqdm==4.67.3",
+    "joblib==1.6.0"
+  ],
+  "known_original_training_versions": {
+    "torch": "2.14.1+cu130",
+    "transformers": "4.57.3",
+    "scikit-learn": "1.7.2"
+  },
+  "random_seed": 42
+}
