@@ -22,5 +22,19 @@
   "random_seed": 42,
   "max_length": 128,
   "batch_size": 32,
-  "exit_code": 0
+  "exit_code": 0,
+  "fresh_clone_verification": {
+    "test_examples": 120,
+    "spearman": 0.821,
+    "roc_auc": 0.963,
+    "cached_time_seconds": 13.9,
+    "cached_samples_per_minute": 517,
+    "first_run_time_seconds": 45.3,
+    "first_run_samples_per_minute": 159,
+    "hardware": "NVIDIA Tesla T4",
+    "python": "3.13.16",
+    "pytorch": "2.14.1+cu130",
+    "includes_model_loading": true,
+    "stage2_data_loading_verified": true
+  }
 }

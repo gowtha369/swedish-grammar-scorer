@@ -1,77 +1,100 @@
-
 # Swedish Grammar Scorer
 
-A Swedish grammatical correctness scoring model developed
-for the AI Sweden master's thesis selection assignment.
+A Swedish grammatical correctness scoring model developed for
+the AI Sweden master's thesis selection assignment.
 
-## Model
+## Model and Dataset
 
-Hugging Face:
-https://huggingface.co/godu24/swedish-grammar-scorer
-
-Dataset:
-https://huggingface.co/datasets/godu24/swedish-grammar-training-data
-
-Architecture: Swedish BERT
-Parameters: 124,692,482
-Maximum sequence length: 128
-Output: Score between 0 and 1
+- Model: https://huggingface.co/godu24/swedish-grammar-scorer
+- Dataset: https://huggingface.co/datasets/godu24/swedish-grammar-training-data
+- Architecture: Swedish BERT
+- Parameters: 124,692,482
+- Maximum sequence length: 128 tokens
+- Output: Score between 0 and 1
 
 ## Performance
 
-Public test evaluation (120 examples):
+Public test evaluation using 120 examples:
 
-| Metric | Result |
-|---|---:|
-| Spearman | 0.821 |
-| ROC-AUC | 0.963 |
-| Execution time | 15.6 seconds |
-| Samples/minute | 460 |
+| Metric | Baseline | Proposed Model |
+|---|---:|---:|
+| Spearman | 0.528 | 0.821 |
+| ROC-AUC | 0.783 | 0.963 |
+| Execution time | 10.1 s | 13.9 s |
+| Samples/minute | 714 | 517 |
 
-Hardware: NVIDIA Tesla T4.
+Hardware: NVIDIA Tesla T4 (Google Colab).
+
+The cached evaluation includes model loading.
+The first run including model download took 45.3 seconds.
+Speed comparisons are limited by differences in hardware.
 
 ## Installation
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
+
+Recorded environment:
+- Python 3.13.16
+- PyTorch 2.14.1+cu130
+
+A compatible CUDA environment may be required.
 
 ## Prediction
 
-python predict.py --input test.jsonl --output scores.jsonl
+    python predict.py --input test.jsonl --output scores.jsonl
 
 Input example:
 
-{"id": 1, "text": "Jag har köpt en ny bil."}
+    {"id": 1, "text": "Jag har köpt en ny bil."}
 
 Output example:
 
-{"id": 1, "score": 0.9172777533531189}
+    {"id": 1, "score": 0.9172777533531189}
+
+The prediction script automatically downloads the published model.
 
 ## Training
 
-Two-stage training:
+Two-stage training approach:
 
-1. Binary classification using 35,452 DaLAJ examples.
-2. Regression fine-tuning using 382 training examples
-   and 96 validation examples from AI Sweden starter data.
+1. Binary classification using 35,452 cleaned DaLAJ examples.
+2. Regression fine-tuning using 382 training examples and
+   96 validation examples from AI Sweden starter data.
 
-Run:
+The BERT encoder is frozen during the second stage.
+Only the classification head is trained using MSE loss.
 
-python train.py --output-dir trained_models
+    python train.py --output-dir trained_models
 
 Random seed: 42.
 
 See training_config.json and stage2_split.json.
 
+## Evaluation
+
+Obtain the original starter repository:
+
+    git clone https://github.com/nicher92/swedish_correctness_classifier.git starter_source
+    git -C starter_source checkout a3f4f81b16694473f528975f20939e4ca586c88a
+
+Run the official evaluation script:
+
+    python starter_source/evaluate.py --repo . --input starter_source/data/test.jsonl --labels starter_source/data/test_labels.jsonl
+
 ## Reproducibility
 
-- Model and dataset revisions recorded.
-- Random seed documented.
-- Training configuration documented.
-- Dataset checksum recorded.
-- Dependency versions recorded.
-- Public evaluation results saved.
+- Fixed random seed.
+- Recorded model and dataset revisions.
+- Recorded dependency versions.
+- Dataset integrity verified using SHA-256.
+- Group-aware training and validation split.
+- Zero group overlap.
+- Automatic retrieval of the original starter dataset.
+- Successful evaluation from a fresh GitHub clone.
+- Successful reconstruction of the training and validation split.
 
-Full end-to-end reproduction remains to be verified.
+Full end-to-end retraining and clean dependency installation
+remain to be verified.
 
 ## Limitations
 
@@ -79,14 +102,24 @@ Full end-to-end reproduction remains to be verified.
 - Context-dependent grammar may be difficult to evaluate.
 - Scores are estimates, not definitive linguistic judgments.
 - Hidden test performance is unknown.
+- Evaluation speed depends on hardware and caching.
 
 ## Base Model
 
 https://huggingface.co/KBLab/bert-base-swedish-cased
 
+## Original Data Sources
+
+- https://spraakbanken.gu.se/en/resources/dalaj-ged-superlim
+- https://github.com/nicher92/swedish_correctness_classifier
+
 ## Licensing
 
-See the original model and dataset licenses.
-Redistribution conditions for all training sources must
-be checked before assigning a project-wide license.
+Refer to the original model and dataset licenses.
 
+The AI Sweden starter dataset is retrieved from its original
+source rather than redistributed in the current repository version.
+Redistribution permission remains to be confirmed, including
+previously published copies in Git history.
+
+No project-wide license is asserted.

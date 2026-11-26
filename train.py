@@ -200,7 +200,7 @@ def load_stage2_data():
 
     source = repo / SPLIT["source_file"]
 
-    checksum = hashlib.sha256(source.read_bytes()).hexdigest()
+    checksum = hashlib.sha256(source.read_bytes().replace(b'\r\n', b'\n')).hexdigest()
 
     assert checksum == SPLIT["source_sha256"]
 
