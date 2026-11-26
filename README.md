@@ -83,9 +83,11 @@ Run the official evaluation script:
 
 ## Reproducibility
 
-- Fixed random seed.
-- Recorded model and dataset revisions.
-- Recorded dependency versions.
+- Fixed random seed: 42.
+- Pinned model and dataset revisions.
+- All 12 pinned dependencies match the evaluation environment.
+- Dependency resolution verified using pip dry-run.
+- Official PyTorch CUDA 13.0 package index configured.
 - Dataset integrity verified using SHA-256.
 - Group-aware training and validation split.
 - Zero group overlap.
@@ -93,8 +95,16 @@ Run the official evaluation script:
 - Successful evaluation from a fresh GitHub clone.
 - Successful reconstruction of the training and validation split.
 
-Full end-to-end retraining and clean dependency installation
-remain to be verified.
+Known original training versions:
+- Transformers: 4.57.3
+- Scikit-learn: 1.7.2
+
+Current evaluation versions:
+- Transformers: 5.22.1
+- Scikit-learn: 1.6.1
+
+Full end-to-end retraining and actual clean dependency
+installation remain to be verified.
 
 ## Limitations
 

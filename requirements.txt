@@ -1,3 +1,5 @@
+--extra-index-url https://download.pytorch.org/whl/cu130
+
 torch==2.14.1+cu130
 transformers==5.22.1
 scikit-learn==1.6.1
