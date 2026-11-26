@@ -36,5 +36,24 @@
     "pytorch": "2.14.1+cu130",
     "includes_model_loading": true,
     "stage2_data_loading_verified": true
+  },
+  "clean_environment_verification": {
+    "git_commit": "1054f83",
+    "python_version": "3.13.16",
+    "pytorch_version": "2.14.1+cu130",
+    "transformers_version": "5.22.1",
+    "clean_installation_successful": true,
+    "dependency_conflicts": false,
+    "cuda_available": true,
+    "training_script_startup_verified": true,
+    "starter_data_loading_verified": true,
+    "identical_smoke_test_predictions": true,
+    "test_examples": 120,
+    "spearman": 0.821,
+    "roc_auc": 0.963,
+    "time_seconds": 13.7,
+    "samples_per_minute": 526,
+    "includes_model_loading": true,
+    "full_retraining_verified": false
   }
 }

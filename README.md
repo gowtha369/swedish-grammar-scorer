@@ -85,26 +85,33 @@ Run the official evaluation script:
 
 - Fixed random seed: 42.
 - Pinned model and dataset revisions.
-- All 12 pinned dependencies match the evaluation environment.
-- Dependency resolution verified using pip dry-run.
-- Official PyTorch CUDA 13.0 package index configured.
+- All 12 pinned dependencies installed successfully in a clean environment.
+- No dependency conflicts detected.
+- CUDA compatibility verified.
 - Dataset integrity verified using SHA-256.
 - Group-aware training and validation split.
 - Zero group overlap.
 - Automatic retrieval of the original starter dataset.
-- Successful evaluation from a fresh GitHub clone.
-- Successful reconstruction of the training and validation split.
+- Training script startup verified.
+- Identical predictions in the clean environment.
+- Official evaluation reproduced successfully.
+
+Clean environment evaluation:
+- Spearman: 0.821
+- ROC-AUC: 0.963
+- Time: 13.7 seconds
+- Samples/minute: 526
+- Hardware: Tesla T4 GPU (original Colab runtime).
 
 Known original training versions:
 - Transformers: 4.57.3
 - Scikit-learn: 1.7.2
 
-Current evaluation versions:
+Current verified evaluation versions:
 - Transformers: 5.22.1
 - Scikit-learn: 1.6.1
 
-Full end-to-end retraining and actual clean dependency
-installation remain to be verified.
+Full end-to-end retraining has not been independently verified.
 
 ## Limitations
 
