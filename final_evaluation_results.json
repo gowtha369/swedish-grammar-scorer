@@ -54,6 +54,24 @@
     "time_seconds": 13.7,
     "samples_per_minute": 526,
     "includes_model_loading": true,
-    "full_retraining_verified": false
+    "full_retraining_verified": true
+  },
+  "full_training_reproduction": {
+    "source_commit": "1054f83",
+    "training_completed": true,
+    "clean_environment": true,
+    "hardware": "Tesla T4",
+    "random_seed": 42,
+    "stage1_training_loss": 0.4134,
+    "stage2_best_epoch": 8,
+    "validation_mae": 0.1285526629847785,
+    "test_examples": 120,
+    "spearman": 0.819,
+    "roc_auc": 0.959,
+    "time_seconds": 18.4,
+    "samples_per_minute": 390,
+    "includes_model_loading": true,
+    "exact_numerical_reproduction": false,
+    "full_retraining_verified": true
   }
 }

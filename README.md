@@ -111,7 +111,29 @@ Current verified evaluation versions:
 - Transformers: 5.22.1
 - Scikit-learn: 1.6.1
 
-Full end-to-end retraining has not been independently verified.
+### Full Training Reproduction
+
+Both training stages were successfully repeated in a clean
+Python environment using a Tesla T4 GPU and random seed 42.
+
+| Metric | Published model | Reproduced model |
+|---|---:|---:|
+| Stage 1 training loss | 0.4097 | 0.4134 |
+| Validation MAE | 0.1337 | 0.1286 |
+| Spearman | 0.821 | 0.819 |
+| ROC-AUC | 0.963 | 0.959 |
+| Time (seconds) | 13.7 | 18.4 |
+| Samples/minute | 526 | 390 |
+
+Full end-to-end retraining was successfully verified.
+The reproduced model achieved comparable performance.
+
+Exact numerical reproducibility was not achieved.
+Some original training dependency versions differ from
+the reproduction environment.
+
+The original published model remains unchanged.
+
 
 ## Limitations
 
