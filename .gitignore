@@ -19,3 +19,6 @@ scores.jsonl
 .env
 .env.*
 HF_TOKEN
+/starter_source/
+
+/data/
